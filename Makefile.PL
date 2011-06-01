@@ -1,7 +1,1 @@
-use inc::Module::Package;
-
-requires 'Mouse';
-requires 'MouseX::App::Cmd';
-# requires 'YAML::XS';
-
-recommends 'Module::Install';
+use inc::Module::Package 'Ingy:modern 0.07';

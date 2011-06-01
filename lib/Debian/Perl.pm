@@ -1,7 +1,7 @@
 ##
 # name:      Debian::Perl
 # abstract:  Package Perl Modules for Debian. Painlessly!
-# author:    Ingy döt Net
+# author:    Ingy döt Net <ingy@cpan.org>
 # license:   perl
 # copyright: 2011
 # see:
@@ -10,27 +10,20 @@
 
 package Debian::Perl;
 use 5.008003;
-our $VERSION = '0.01';
-use Mouse;
+our $VERSION = '0.02';
+use Mouse 0.93;
+use MouseX::App::Cmd 0.08;
+use DhMakePerl 0.71 ();
 
 sub build {
     print "\nBuilding your Debian Package...\n";
-    sleep 1;
-    print "\n...just kidding. coming soon though!\n\n";
+    DhMakePerl->run;
 }
 
 sub release {
     print "\nReleasing your Debian Package...\n";
     sleep 1;
     print "\n...just kidding. coming soon though!\n\n";
-}
-
-sub make_debian {
-    Debian::Perl->new->build;
-}
-
-sub make_release {
-    Debian::Perl->new->release;
 }
 
 #-----------------------------------------------------------------------------

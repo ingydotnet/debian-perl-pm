@@ -1,0 +1,128 @@
+>  cd strategic-stories-cog/
+>  cd ../cog-pm
+>  dh-make-perl 
+>  vim debian/control 
+>  cat META.yml 
+>  vim pkg/manifest.skip
+>  vim debian/control 
+>  vim debian/
+>  debuild
+>  vim debian/changelog 
+>  make manifest dist
+>  debuild
+>  lintian-info -t native-package-with-dash-version
+>  debuild
+>  man debuild
+>  man dpkg-buildpackage
+>  man dpkg-source
+>  debuild -i -us -uc
+>  ls -l ../libcog*
+>  dpkg -I ../libcog-perl_0.07-1_all.deb
+>  cd ..
+>  cd /home/ingy/src/cog-pm/
+>  dpkg -c ../libcog-perl_0.07-1_all.deb 
+>  ls ../libcog-perl_0.07*
+>  zless ../libcog-perl_0.07-1.diff.gz 
+>  ls notes/
+>  cat MANIFEST.SKIP 
+>  ls ../libcog-perl_0.07*
+>  cat ../libcog-perl_0.07-1.dsc 
+>  tar -ztvf ../libcog-perl_0.07.orig.tar.gz 
+>  vim pkg/manifest.skip 
+>  tar tzf Cog-0.07.tar.gz | less
+>  mv Cog-0.07.tar.gz ../libcog-perl_0.07.orig.tar.gz 
+>  debuild -i -us -uc
+>  ls ../libcog-perl_0.07*
+>  zless ../libcog-perl_0.07-1.diff.gz 
+>  lintian-info -t changelog-should-mention-nmu
+>  vi debian/control 
+>  debuild -i -us -uc
+>  vim lib/Cog/FileBrowser.pm 
+>  podchecker lib/Cog/Manual.pod 
+>  vim lib/Cog/FileBrowser.pm 
+>  podchecker lib/Cog/Manual.pod 
+>  podchecker lib/Cog/FileBrowser.pm 
+>  debuild -i -us -uc
+>  lintian-info -t description-synopsis-starts-with-article
+>  vim debian/control 
+>  debuild -i -us -uc
+>  vim bin/cog 
+>  debuild -i -us -uc
+>  lintian-info -t debian-copyright-file-uses-obsolete-national-encoding
+>  vim debian/copyright 
+>  hexdump -C debian/copyright 
+>  cd debian
+>  iconv -f ISO-8859-1 -t UTF-8 copyright > copyright.new
+>  cat copyright.new 
+>  cat copyright
+>  mv copyright.new copyright
+>  vim copyright 
+>  cd ..
+>  debuild -i -us -uc
+>  lintian-info -t new-package-should-close-itp-bug
+>  cat debian/changelog 
+>  cat Changes 
+>  zless ../libcog-perl_0.07-1.diff.gz 
+>  dpkg -c ../libcog-perl_0.07-1_all.deb 
+>  dpkg -c ../libcog-perl_0.07-1_all.deb 
+>  cat debian/control 
+
+== pbuilder
+
+>  pbuilder --build ../libcog-perl_0.07-1.dsc 
+>  sudo pbuilder --build ../libcog-perl_0.07-1.dsc 
+>  man pbuilder
+>  sudo DIST=lenny pbuilder --create
+>  cat /etc/pbuilderrc 
+>  man debuild
+>  man dpkg-buildpackage
+>  man dpkg-genchanges
+>  debuild -i -us -uc -sa
+>  ls -l ../libcog-perl_0.07*
+>  dpkg -c ../libcog-perl_0.07-1_all.deb 
+>  cat ../libcog-perl_0.07-1.dsc 
+>  cat ../libcog-perl_0.07-1_i386.changes 
+>  cat ~/pbuilderrc 
+>  rm ~/pbuilderrc 
+>  vim ~/.pbuilderrc 
+>  apts cowbuilder
+>  apti cowbuilder
+>  man cowdancer
+>  dpkg -L cowdancer
+>  man cow-shell
+>  sudo DIST=lenny pbuilder --create
+>  vim ~/.pbuilderrc 
+>  sudo DIST=lenny pbuilder --create
+>  sudo DIST=lenny-sw-staging pbuilder --create
+>  gpg --recv-keys 4D270D06F42584E6
+>  sudo DIST=lenny-sw-staging pbuilder --create
+>  man apt-key
+>  gpg -a --export 4D270D06F42584E6
+>  gpg -a --export 4D270D06F42584E6 | sudo apt-key add -
+>  sudo DIST=lenny-sw-staging pbuilder --create
+>  man debootstrap
+>  sudo DIST=lenny-sw-staging pbuilder --create --debootstrapopts --keyring=/usr/share/keyrings/debian-archive-keyring.gpg
+>  ls -l /usr/share/keyrings/
+>  gpg -a --export 4D270D06F42584E6 >debian-archive-keyring.gpg
+>  sudo mv debian-archive-keyring.gpg /usr/share/keyrings/
+>  sudo DIST=lenny-sw-staging pbuilder --create --debootstrapopts --keyring=/usr/share/keyrings/debian-archive-keyring.gpg
+>  history >~/h1
+>  cat /usr/share/keyrings/debian-archive-keyring.gpg 
+>  cat /usr/share/keyrings/ubuntu-archive-keyring.gpg 
+>  man gpg
+>  gpg --export 4D270D06F42584E6 >debian-archive-keyring.gpg
+>  sudo mv debian-archive-keyring.gpg /usr/share/keyrings/
+>  file /usr/share/keyrings/*
+>  sudo DIST=lenny-sw-staging pbuilder --create --debootstrapopts --keyring=/usr/share/keyrings/debian-archive-keyring.gpg
+>  ls -l /var/cache/
+>  ls -l /var/cache/pbuilder/
+>  ls -l /var/cache/pbuilder/build/
+>  sudo rm -rf /var/cache/pbuilder/build/25133
+>  sudo DIST=lenny-sw-staging pbuilder --create --debootstrapopts --keyring=/usr/share/keyrings/debian-archive-keyring.gpg
+>  ls -l /var/cache/pbuilder/
+>  ls -l /var/cache/pbuilder/aptcache/
+>  ls -l /var/cache/pbuilder/build/
+>  ls -l /var/cache/pbuilder/ccache/
+>  ls -l /var/cache/pbuilder/lenny-amd64/
+>  ls -l /var/cache/pbuilder/lenny-amd64/result/
+>  history > ~/debian-build-session-history

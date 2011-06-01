@@ -9,22 +9,23 @@
 # - Module::Install
 
 package Module::Install::Debian::Perl;
+use 5.008003;
 use strict;
+use warnings;
+use base 'Module::Install::Base';
 
-# use base 'Module::Install::Base';
-use Module::Install::Base; use vars '@ISA'; BEGIN { @ISA = 'Module::Install::Base' }
-
-use constant AUTHOR => 1;
+our $VERSION = '0.02';
+our $AUTHOR_ONLY = 1;
 
 sub debian {
     my ($self) = @_;
     return unless $self->is_admin;
     $self->postamble(<<'...');
 debian::
-	$(PERL) -Ilib -MDebian::Perl -e "Debian::Perl::make_debian"
+	$(PERL) -Ilib -MDebian::Perl -e "Debian::Perl->make_debian"
 
 release::
-	$(PERL) -Ilib -MDebian::Perl -e "Debian::Perl::make_release"
+	$(PERL) -Ilib -MDebian::Perl -e "Debian::Perl->make_release"
 ...
 }
 

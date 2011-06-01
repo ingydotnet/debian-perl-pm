@@ -1,4 +1,9 @@
 ---
+version: 0.02
+date:    
+changes:
+- Get basic functionality working
+---
 version: 0.01
 date:    Tue May 10 19:35:13 EST 2011
 changes:

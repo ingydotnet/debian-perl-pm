@@ -1,6 +1,18 @@
 #!/usr/bin/perl
 
+##
+# name:      debian-perl
+# abstract:  Command line tool for Debian::Perl
+# author:    Ingy döt Net <ingy@cpan.org>
+# license:   perl
+# copyright: 2011
+# see:
+# - Debian::Perl
+
 use lib 'lib';
 use strict;
 use Debian::Perl;
 Debian::Perl::Cmd->run;
+
+__END__
+

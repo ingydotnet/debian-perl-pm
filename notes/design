@@ -1,0 +1,38 @@
+Perl module authors are used to doing things with make:
+
+    perl Makefile.PL    # Makes a makefile
+    make                # Build the preinstall
+    make test           # Run the tests
+    make install        # Install everything
+    make dist           # Make a CPAN distibution package
+    make upload         # Send the dist to CPAN
+    make clean          # Reset
+
+and many others. Adding:
+
+    make debian
+
+to that list would get people to try it!
+
+Module::Install lets you easily add Makefile targets to modules. Even targets
+that only get used by the module authors.
+
+Debian::Perl (the thing I released to CPAN yesterday as a skeleton) does this.
+
+The next thing to do is decide what `make debian` will do and code it.
+
+Here's a strawman plan, from what little I know:
+
+    * Run dh-make-perl on the dist.
+      * Scan the output for common errors and print FAQ suggestions.
+      * Stop if there are errors.
+    * Run debuild or pbuilder.
+      * Scan, suggest and stop (as above)
+    * Run lintian.
+      * Scan, suggest and stop (as above)
+    * Give them a pat on the back, and tell them what to do next.
+
+Of course there would be various ways to config things. `make build` would
+offer hints on config for future runs as well.
+
+
