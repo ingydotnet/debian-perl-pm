@@ -1,0 +1,43 @@
+from    Charles Plessy plessy@debian.org
+to      debian-perl@lists.debian.org
+cc      Ingy dot Net <ingy@ingy.net>
+date    Mon, Jun 6, 2011 at 1:04 PM
+subject Re: Copyright License Proposal
+        
+Dear Ingy and everybody,
+
+one way that may help to automate the creation of Debian copyright files from
+META.yml files would be to use the same license strings as in the SPDX project.
+This list has a great potential to become a canonical reference, as for
+instance the OSI and Debian are converging on it.
+
+About SPDX short names:
+
+ http://spdx.org/licenses/
+ http://spdx.org/content/celebrate-small-victories-and-cheers-open-source-initiative
+
+About META.yml license strings:
+
+ http://search.cpan.org/~dagolden/CPAN-Meta-2.110930/lib/CPAN/Meta/Spec.pm#license
+
+For works where there is more than one copyright holder and license, I would
+recommend to the CPAN author to write a machine-readable copyright summary.
+The the “DEP 5” or SPDX formats have a different granularity and may fit
+different preferences.  Both of them are not released yet, but I recommend
+having a look, as they are close to completion.  For the DEP 5 format, there is
+even a parser in CPAN.
+
+About DEP 5:
+
+ http://dep.debian.net/deps/dep5/
+ http://ddumont.wordpress.com/2011/01/13/debian-copyright-dep5-parsereditorvalidatormigrator-is-released/
+
+The SPDX spec:
+
+ http://spdx.org/spec
+
+Have a nice day,
+
+--
+Charles Plessy
+Tsurumi, Kanagawa, Japan

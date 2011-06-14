@@ -1,5 +1,5 @@
 NAME
-    Debian::Perl - Package Perl Modules for Debian. Painlessly!
+    Debian::Perl - CPAN Author's Debian Packaging Toolset
 
 SYNOPSIS
     From the command line:
@@ -14,10 +14,16 @@ SYNOPSIS
         > make release
 
 DESCRIPTION
-    If you are a Perl module author, you probably know quite a bit about
-    Perl, modules and CPAN. You probably know about Debian Linux. There's
-    even a decent chance you've used it. However, there's only a very slim
-    chance that you maintain Debian packages for your modules.
+    Debian::Perl is a set of tools that encourages CPAN authors to become
+    the Debian maintainers for their work, or to at least provide the
+    necessary structure for downstream (Debian) maintainers. It tries to
+    make prepping for Debian a very simple and discoverable process.
+
+RATIONALE
+    If you are a Perl CPAN module author, you probably know quite a bit
+    about Perl, CPAN and modules. You probably know about Debian Linux.
+    There's even a decent chance you've used it. However, there's only a
+    very slim chance that you maintain Debian packages for your modules.
 
     Let's assume that this at least vaguely describes you. If someone told
     you that you could flip a switch, and then every time you released a
@@ -33,7 +39,7 @@ DESCRIPTION
     This module is just a helping hand that automates all the standard best
     practices for you. It bends over backwards to help you get that module
     to Debian without having to know any more than is expected of a busy
-    Perl module author, like you.
+    Perl module author, like yourself.
 
     Specifically it uses things like "dh-make-perl", "debuild", "pbuilder"
     and "lintian". If you've never heard of these things, that's ok. Until
@@ -43,17 +49,86 @@ DESCRIPTION
     plan to forget about them as quickly as possible. :)
 
 USAGE
-    There are two ways to use this module. There is a command called
-    "debian-perl" that you can use to prepare, build, test and release
-    Debian packages from your Perl module. There is also a Module::Install
-    plugin that allows you to simply do:
+    There are two ways to use this module. There is a command line tool
+    called "debian-perl" that you can use to prepare, build, test and
+    release Debian packages from your Perl module. There is also a
+    Module::Install plugin that allows you to issue "make debian" commands.
 
-        > make debian
+    To get your module to the goal, of Debian happiness, you will often need
+    to supply extra
 
-    See Module::Install::Debian::Perl
+  Environment
+    Using these commands assumes that you are cd'd into the source directory
+    of your module. It also assumes that you use a Makefile.PL
+    (ExtUtils::MakeMaker, Module::Install or "Module::Package), a
+    Module::Build, or a Dist::Zilla based layout."
 
-MORE DOCUMENTATION
-    Coming soon...
+    When you use the Debian::Perl tool to build and test a Debian package
+    from your code, everything will happen under your current directory,
+    including the location of final .deb file.
+
+    NOTE: Debian::Perl isn't very useful for applying to other people's
+    modules from CPAN, because you won't have the original sources that
+    these were created from. Users of Debian::Perl often need to maintain a
+    number of Debian hints, and these files don't get packaged into the CPAN
+    distribution packages.
+
+  "debian-perl" usage
+    This is the primary command line tool provided by Debian::Perl. Try:
+
+        debian-perl help
+        debian-perl config
+        debian-perl build
+        debian-perl test
+        debian-perl clean
+
+    Also see debian-perl.
+
+  "Makefile" usage
+    If you use Module::Install in your Makefile.PL, you can just add a
+    single line, like this:
+
+        use inc::Module::Install;
+        ...
+        debian_perl;
+        ...
+        WriteAll;
+
+    Then you will have access to Makefile targets like:
+
+        make debian-config
+        make debian-build
+        make debian-test
+        make debian-upload
+
+    and
+
+        make clean
+
+    will remove any debian build mess.
+
+    See Module::Install::Debian::Perl for more info.
+
+  Debian::Perl Configuration
+    This module looks for author specified conguration hints in a few
+    places. First it looks for a a directory called "./debian/" or
+    "./package/debian/".
+
+    Under this directory, it looks for a file called "conf.yaml". This file
+    is used for top level configuration instructions. See
+    Debian::Perl::Config.
+
+    You can create a new "./debian/conf.yaml" config file with this command:
+
+        debian-perl config
+
+PROCESSING
+    This section describes exactly what happens when you issue "debian-perl"
+    commands. It is useful for people who want to understand exactly what
+    "debian-perl" is doing without reading its source code.
+
+IN PROGRESS
+    More doc coming soon...
 
 STATUS
     This module is brand new and in heavy development. Nothing to see here.
@@ -69,7 +144,12 @@ KUDOS
     Also a nod to Jeremiah Foster whose article in The Perl Review from the
     Spring 2009 issue, not only pointed me in the right directions, but also
     convinced me that the process was still not quite consumable by the
-    masses. I look forward to working with you and the debian-perl team.
+    masses.
+
+    Finally, a big shout out to the Debian Perl team
+    (irc.oftc.org#debian-perl and debian-perl@lists.debian.org) who are the
+    masters of Perl maintenance for Debian. In working with them, I have
+    become one of them.
 
 SEE ALSO
     *   DhMakePerl
@@ -86,4 +166,11 @@ COPYRIGHT AND LICENSE
     under the same terms as Perl itself.
 
     See http://www.perl.com/perl/misc/Artistic.html
+
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
+
+    Around line 68:
+        Unterminated L<...> sequence
 

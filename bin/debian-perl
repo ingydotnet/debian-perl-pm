@@ -11,8 +11,7 @@
 
 use lib 'lib';
 use strict;
-use Debian::Perl;
+use Debian::Perl::Cmd;
 Debian::Perl::Cmd->run;
 
 __END__
-
